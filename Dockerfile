@@ -8,6 +8,7 @@ RUN pip install gunicorn==19.1.1
 
 # the parent image creates this directory (along with /app/logs)
 WORKDIR /app
+RUN echo 1
 
 # TOOD: move this to ancestor image?
 RUN mkdir /app/run

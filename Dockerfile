@@ -24,9 +24,9 @@ RUN echo 1
 
 # TOOD: move this to ancestor image?
 RUN mkdir /app/run
-RUN mkdir /app/django
+RUN mkdir /app/djangoapp
 #add the project to the /app/
-ADD django/ /app/django
+ADD djangoapp/ /app/djangoapp
 ADD gunicorn_conf.py /app/
 ADD gunicorn.supervisor.conf /etc/supervisor/conf.d/
 
@@ -37,7 +37,7 @@ ADD nginx.supervisor.conf /etc/supervisor/conf.d/
 ADD spider.supervisor.conf /etc/supervisor/conf.d/
 
 #Replace the project /app/ with your project name
-RUN export PYTHONPATH=/app/django/
+RUN export PYTHONPATH=/app/djangoapp/
 # this setting disappears when the session end
 
 VOLUME ["/app/logs"]

@@ -13,6 +13,8 @@ RUN pip install Django
 # 3.link the gunicorn to the wsgi
 # 4.run the gunicorn
 # the parent image creates this directory (along with /app/logs)
+# 5.ADD spider.supervisor.conf /etc/supervisor/conf.d
+
 ####TODO
 
 WORKDIR /app

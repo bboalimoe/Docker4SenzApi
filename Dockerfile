@@ -26,7 +26,7 @@ RUN echo 1
 RUN mkdir /app/run
 
 #add the project to the /app/
-ADD app/ /app
+ADD django/ /app/
 ADD gunicorn_conf.py /app/
 ADD gunicorn.supervisor.conf /etc/supervisor/conf.d/
 
@@ -37,7 +37,7 @@ ADD nginx.supervisor.conf /etc/supervisor/conf.d/
 ADD spider.supervisor.conf /etc/supervisor/conf.d/
 
 #Replace the project /app/ with your project name
-RUN export PYTHONPATH=/app/app/
+RUN export PYTHONPATH=/app/django/
 # this setting disappears when the session end
 
 VOLUME ["/app/logs"]

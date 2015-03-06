@@ -8,6 +8,7 @@ RUN apt-get -yq install nginx
 RUN pip install gunicorn==19.1.1
 RUN pip install Django
 
+
 ####TODO
 # 1.every service should add the dependency to the requirements.txt
 # 2.ADD /SERVICE_PROJECT/ /IMAGE/app/
@@ -25,7 +26,7 @@ RUN echo 1
 RUN mkdir /app/run
 
 #add the project to the /app/
-ADD /app/ /app/
+ADD app/ /app
 ADD gunicorn_conf.py /app/
 ADD gunicorn.supervisor.conf /etc/supervisor/conf.d/
 

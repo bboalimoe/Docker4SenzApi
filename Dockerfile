@@ -37,8 +37,9 @@ ADD nginx.supervisor.conf /etc/supervisor/conf.d/
 ADD spider.supervisor.conf /etc/supervisor/conf.d/
 
 #Replace the project /app/ with your project name
-RUN export PYTHONPATH=/app/djangoapp/
+#RUN export PYTHONPATH=/app/djangoapp/
 # this setting disappears when the session end
+WORKDIR /app/djangoapp
 
 VOLUME ["/app/logs"]
 EXPOSE 9010

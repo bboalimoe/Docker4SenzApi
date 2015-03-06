@@ -4,6 +4,7 @@ MAINTAINER tech@texastribune.org
 RUN apt-get -yq install nginx
 # There's a known harmless warning generated here:
 # See https://github.com/benoitc/gunicorn/issues/788
+
 RUN pip install gunicorn==19.1.1
 RUN pip install Django
 
@@ -13,7 +14,7 @@ RUN pip install Django
 # 3.link the gunicorn to the wsgi
 # 4.run the gunicorn
 # the parent image creates this directory (along with /app/logs)
-# 5.ADD spider.supervisor.conf /etc/supervisor/conf.d
+
 
 ####TODO
 
@@ -23,11 +24,20 @@ RUN echo 1
 # TOOD: move this to ancestor image?
 RUN mkdir /app/run
 
+#add the project to the /app/
+ADD /app/ /app/
 ADD gunicorn_conf.py /app/
 ADD gunicorn.supervisor.conf /etc/supervisor/conf.d/
 
 ADD nginx.conf /app/
 ADD nginx.supervisor.conf /etc/supervisor/conf.d/
 
+
+ADD spider.supervisor.conf /etc/supervisor/conf.d/
+
+#Replace the project /app/ with your project name
+RUN export PYTHONPATH=/app/app/
+# this setting disappears when the session end
+
 VOLUME ["/app/logs"]
-EXPOSE 8000
+EXPOSE 9010

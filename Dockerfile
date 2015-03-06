@@ -24,9 +24,9 @@ RUN echo 1
 
 # TOOD: move this to ancestor image?
 RUN mkdir /app/run
-
+RUN mkdir /app/django
 #add the project to the /app/
-ADD django/ /app/
+ADD django/ /app/django
 ADD gunicorn_conf.py /app/
 ADD gunicorn.supervisor.conf /etc/supervisor/conf.d/
 

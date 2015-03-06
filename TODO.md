@@ -1,2 +1,0 @@
-- this could ADD and install the requirements.txt 
-- if we make this or a variant more specific we could do Grunt and collectstatic
